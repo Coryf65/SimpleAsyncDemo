@@ -1,7 +1,7 @@
 # SimpleAsyncDemo
 
-- Demo from Tim Corey on YouTube [here](https://youtu.be/2moh18sh5p4)
-- Microsoft Docs about Async Programming [here](https://docs.microsoft.com/en-us/dotnet/csharp/async)
+- Demo from Tim Corey on YouTube [here](https://youtu.be/2moh18sh5p4 "C# Async/Await YouTube Tutorial")
+- Microsoft Docs about Async Programming [here](https://docs.microsoft.com/en-us/dotnet/csharp/async "Microsoft Docs on Async Programming")
 
 ## Async Info
 
