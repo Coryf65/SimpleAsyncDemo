@@ -17,6 +17,7 @@ namespace WPFUserInterface
             InitializeComponent();
         }
 
+        // EXCEPT for an event you can return void and not Task
         private void executeSync_Click(object sender, RoutedEventArgs e)
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -31,6 +32,7 @@ namespace WPFUserInterface
 
         private async void executeAsync_Click(object sender, RoutedEventArgs e)
         {
+            // is better for timing than DateTime.now
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             await RunDownloadParallelAsync();
@@ -57,17 +59,22 @@ namespace WPFUserInterface
             return output;
         }
 
+        // Don't return void if you don't have anything to return, return a Task.
         private async Task RunDownloadAsync()
         {
             List<string> websites = PrepData();
 
             foreach (string site in websites)
             {
+                // This allows us to run async for a method we may not be able to modify
+                // The Task ususally returns a task<T> so then we run a lambda to make this work
                 WebsiteDataModel results = await Task.Run(() => DownloadWebsite(site));
                 ReportWebsiteInfo(results);
             }
         }
 
+        // Naming convention is to append async on the end
+        // This one will run all website results at the same time
         private async Task RunDownloadParallelAsync()
         {
             List<string> websites = PrepData();
@@ -75,13 +82,16 @@ namespace WPFUserInterface
 
             foreach (string site in websites)
             {
+                // Adding each task into a list. 
                 tasks.Add(DownloadWebsiteAsync(site));
             }
 
-            var results = await Task.WhenAll(tasks);
+            // Whenall, we pass in some amount of tasks until these are all done. then pass the results back into this var
+            WebsiteDataModel[] results = await Task.WhenAll(tasks);
 
             foreach (var item in results)
             {
+                // write to the window
                 ReportWebsiteInfo(item);
             }
         }
@@ -108,6 +118,7 @@ namespace WPFUserInterface
             return output;
         }
 
+        // Here we are returning a Type  of <WebsiteDataModel>
         private async Task<WebsiteDataModel> DownloadWebsiteAsync(string websiteURL)
         {
             WebsiteDataModel output = new WebsiteDataModel();
