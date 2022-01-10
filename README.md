@@ -1,6 +1,13 @@
 # SimpleAsyncDemo
 
 - Demo from Tim Corey on YouTube [here](https://youtu.be/2moh18sh5p4)
+- Microsoft Docs about Async Programming [here](https://docs.microsoft.com/en-us/dotnet/csharp/async)
+
+## Async Info
+
+>If you have any I/O-bound needs (such as requesting data from a network, accessing a database, or reading and writing to a file system), you'll want to utilize >asynchronous programming. You could also have CPU-bound code, such as performing an expensive calculation, which is also a good scenario for writing async code.
+>C# has a language-level asynchronous programming model, which allows for easily writing asynchronous code without having to juggle callbacks or conform to a library >that supports asynchrony. It follows what is known as the Task-based Asynchronous Pattern (TAP).
+-From Microsoft Documentation
 
 1. Learning about the new way to handle Threading. Using Tasks and Async / Await.
 
