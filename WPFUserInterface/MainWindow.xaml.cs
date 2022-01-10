@@ -89,6 +89,7 @@ namespace WPFUserInterface
             // Whenall, we pass in some amount of tasks until these are all done. then pass the results back into this var
             WebsiteDataModel[] results = await Task.WhenAll(tasks);
 
+            // when they are all done write each one
             foreach (var item in results)
             {
                 // write to the window
